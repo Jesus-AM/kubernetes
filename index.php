@@ -18,7 +18,7 @@
             $query = "INSERT INTO student(stdname,stdreg) VALUE('$stdname',$stdreg)";
 
             //sending data to database
-            $createQuery = mysqli_query($conn, $query);
+            $createQuery = mysql_query($conn, $query);
             if($createQuery){
               echo "Data successfully inserted.";
             }
@@ -35,7 +35,7 @@
   if(isset($_GET['delete'])){
     $stdid = $_GET['delete']; //keeping the delete id in stdid
     $query = "DELETE FROM student WHERE id={$stdid}";
-    $deleteQuery = mysqli_query($conn, $query);
+    $deleteQuery = mysql_query($conn, $query);
     if($deleteQuery){
       echo "Data successfully deleted";
     }
@@ -69,9 +69,9 @@
               if(isset($_GET['update'])){ //if click on update button
                 $stdid = $_GET['update']; //geting update id from search query
                 $query = "SELECT * FROM student WHERE id={$stdid}";
-                $getData = mysqli_query($conn, $query); //getting data based on query
+                $getData = mysql_query($conn, $query); //getting data based on query
 
-                while($rx=mysqli_fetch_assoc($getData)){ //keep data rx variable afte fetch
+                while($rx=mysql_fetch_assoc($getData)){ //keep data rx variable afte fetch
                   $stdid = $rx['id'];
                   $stdname = $rx['stdname'];
                   $stdreg = $rx['stdreg'];
@@ -91,7 +91,7 @@
 
                  if(!empty($stdname) && !empty($stdreg)){
                   $query = "UPDATE student SET stdname='$stdname', stdreg=$stdreg WHERE id=$stdid";
-                  $updateQuery = mysqli_query($conn, $query);
+                  $updateQuery = mysql_query($conn, $query);
                   // if($updateQuery){
                   //   echo "Data Updated successful";
                   // }
@@ -116,11 +116,11 @@
        //select all query
         $query = "SELECT * FROM student";
         //reading data from databse
-        $readQuery = mysqli_query($conn, $query);
+        $readQuery = mysql_query($conn, $query);
         // if table has more than 0 row then it will read data
         if($readQuery->num_rows >0){
           // if tables row > 0 read data from db and store the data into rd variable
-          while($rd=mysqli_fetch_assoc($readQuery)){
+          while($rd=mysql_fetch_assoc($readQuery)){
             //'id' is the table column name which col will be read
             $stdid = $rd['id']; // keeping data from db table to variable
             $stdname = $rd['stdname'];
