@@ -1,6 +1,6 @@
 <?php
     //creating connection
-    $conn = mysqli_connect('148.210.68.165:3306','jesususer','toor','stdinfo');
+    $conn = mysqli_connect('148.210.68.165:3306','juser','toor','stdinfo');
     // //checking connection
     // if($conn){
     //     echo "Connection Established";
